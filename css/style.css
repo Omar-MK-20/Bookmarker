@@ -28,3 +28,21 @@ h1::before {
 h1:hover::before {
     height: 70%;
 }
+
+
+.border-dot {
+    border-width: 2px 0 2px 0;
+    border-style: dotted;
+    border-color: rgb(53, 46, 40);
+}
+
+h2 {
+    font-family: "Righteous", sans-serif;
+    color: transparent;
+    background: linear-gradient(90deg, rgb(63,165,92), rgb(179, 172, 73));
+    background-clip: text;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30px;
+    display: inline-block;
+}
