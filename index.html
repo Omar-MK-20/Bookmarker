@@ -27,11 +27,11 @@
 
                 <div class="mt-3 px-2 me-auto w-100">
                     <label for="siteName" class="form-label"><i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label>
-                    <input type="email" name="email" id="siteName" class="form-control" placeholder="Bookmark Name">
+                    <input type="text" name="text" id="siteName" class="form-control" placeholder="Bookmark Name">
                 </div>
                 <div class="mt-3 px-2 me-auto w-100">
                     <label for="siteURL" class="form-label"><i class="fa-solid fa-link me-2"></i>Site URL</label>
-                    <input type="url" name="email" id="siteURL" class="form-control" placeholder="Website URL">
+                    <input oninput="regularEx()" type="url" name="url" id="siteURL" class="form-control danger" placeholder="Website URL">
                 </div>
 
                 <button id="submitbtn" type="submit" onclick="addBookmark()" class="btn btn-page px-5 my-3 ">Submit</button>
