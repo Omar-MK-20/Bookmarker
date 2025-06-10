@@ -140,3 +140,25 @@ function updateBookmark()
 }
 
 
+function regularEx()
+{
+	const regex = /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}(\.[a-zA-Z0-9()]{1,6})\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/;
+
+// Alternative syntax using RegExp constructor
+// const regex = new RegExp('^(https?:\\\/\\\/)?(www\\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}(\\.[a-zA-Z0-9()]{1,6})\\b(?:[-a-zA-Z0-9()@:%_+.~#?&\/=]*)$', '')
+
+const str = siteURL.value;
+
+// Reset `lastIndex` if this regex is defined globally
+// regex.lastIndex = 0;
+
+if ((regex.test(str)))
+{
+	siteURL.classList.add('is-valid');
+	siteURL.classList.remove('is-invalid');
+}
+else
+{
+	siteURL.classList.add('is-invalid');
+	siteURL.classList.remove('is-valid');
+}}
