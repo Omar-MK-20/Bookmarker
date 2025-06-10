@@ -34,7 +34,8 @@
                     <input type="url" name="email" id="siteURL" class="form-control" placeholder="Website URL">
                 </div>
 
-                <button type="submit" onclick="addBookmark()" class="btn btn-page px-5 my-3">Submit</button>
+                <button id="submitbtn" type="submit" onclick="addBookmark()" class="btn btn-page px-5 my-3 ">Submit</button>
+                <button id="editbtn" type="submit" onclick="updateBookmark()" class="btn btn-warning px-5 my-3 d-none">Edit</button>
             </section>
 
             <table class="table text-center">
@@ -43,26 +44,16 @@
                     <th scope="col">Index</th>
                     <th scope="col">Website Name</th>
                     <th scope="col">Visit</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
-                    <td><button type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
-                    <td><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td><button type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
-                    <td><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>John</td>
-                    <td><button type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
+                    <td><button onclick="window.open('//www.facebook.com/', '_blank')" type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
+                    <td><button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen pe-2"></i>Edit</button></td>
                     <td><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
                     </tr>
                 </tbody>
@@ -72,6 +63,7 @@
     </main>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
