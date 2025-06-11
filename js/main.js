@@ -97,6 +97,10 @@ function displayBookamrks()
 {
     var tableRows = ``;
 
+	if(urls.length == null)
+	{
+		return
+	}
     for(var i = 0; i < urls.length; i++)
     {
         tableRows += `
