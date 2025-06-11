@@ -63,6 +63,10 @@ function addBookmark()
 
 		for(var i = 0; i < urls.length; i++)
 		{
+			if(urls.length == null)
+			{
+				break;
+			}
 			if(siteName.value == urls[i].siteName)
 			{
 				isRepeated = true;
