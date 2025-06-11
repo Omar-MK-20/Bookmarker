@@ -60,19 +60,19 @@ function addBookmark()
     if(regularEx(siteName) && regularEx(siteURL))
     {
 		var isRepeated = false;
-		if(urls == null)
+		if(urls != null)
 		{
-			return;
-		}
-		for(var i = 0; i < urls.length; i++)
-		{
-			
-			if(siteName.value == urls[i].siteName)
+			for(var i = 0; i < urls.length; i++)
 			{
-				isRepeated = true;
-				break;
+				
+				if(siteName.value == urls[i].siteName)
+				{
+					isRepeated = true;
+					break;
+				}
 			}
 		}
+		
 		if(isRepeated)
 		{
 			siteName.classList.remove('mb-4');
