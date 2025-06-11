@@ -60,13 +60,13 @@ function addBookmark()
     if(regularEx(siteName) && regularEx(siteURL))
     {
 		var isRepeated = false;
-
+		if(urls.length == null)
+		{
+			return;
+		}
 		for(var i = 0; i < urls.length; i++)
 		{
-			if(urls.length == null)
-			{
-				break;
-			}
+			
 			if(siteName.value == urls[i].siteName)
 			{
 				isRepeated = true;
