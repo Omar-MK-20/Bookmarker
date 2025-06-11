@@ -4,6 +4,7 @@ var siteURL = document.getElementById('siteURL');
 var tableBody = document.getElementById('tableBody');
 var submitbtn = document.getElementById('submitbtn');
 var editbtn = document.getElementById('editbtn');
+var validDivForUrl = document.getElementById('validDivForUrl');
 // ================
 
 // loading
@@ -30,6 +31,12 @@ function reset()
 {
     siteName.value = null
     siteURL.value = null
+	siteName.classList.remove('is-valid');
+	siteName.classList.remove('is-invalid');
+	siteURL.classList.remove('is-valid');
+	siteURL.classList.remove('is-invalid');
+	siteName.nextElementSibling.classList.remove('d-block');
+	siteURL.nextElementSibling.classList.remove('d-block');
 }
 
 function changeBtnToEdit()
@@ -73,9 +80,9 @@ function displayBookamrks()
             <tr>
             <th scope="row">${i+1}</th>
             <td>${urls[i].siteName}</td>
-            <td><button onclick="window.open('//${urls[i].siteURL}', '_blank')" type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
-            <td><button onclick="getData(${i})" type="submit" class="btn btn-warning"><i class="fa-solid fa-pen pe-2"></i>Edit</button></td>
-            <td><button onclick="deleteBookmark(${i})" type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
+            <td><button onclick="window.open('//${urls[i].siteURL}', '_blank')" type="submit" class="btn btn-oily text-center"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
+            <td><button onclick="getData(${i})" type="submit" class="btn btn-warning text-center"><i class="fa-solid fa-pen pe-2"></i>Edit</button></td>
+            <td><button onclick="deleteBookmark(${i})" type="submit" class="btn btn-danger text-center"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
             </tr>` 
     }
 
@@ -139,26 +146,27 @@ function updateBookmark()
     reset();
 }
 
+// console.log(siteName.id);
 
-function regularEx()
+function regularEx(element)
 {
-	const regex = /^(https?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}(\.[a-zA-Z0-9()]{1,6})\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$/;
+	const regex = 
+	{
+		siteName: /^[a-zA-Z0-9]{2,}(?:[a-zA-Z0-9\s]*)[a-zA-Z0-9]+$/,
+		siteURL: /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{1,63}(\.[a-zA-Z0-9-]{1,63})*(\.(?:com|net|org|co|biz|info|tech|app|store|shop|dev|design|media|finance|money|us|uk|ca|au|in|nyc|london|berlin|asia|africa|eu|lat|io|ai|me|xyz|site|online|space|club|life|guru|ninja|cool|fun|today|world))\b(:\d{1,5})?(\/[^\s]*)?$/
+	}
 
-// Alternative syntax using RegExp constructor
-// const regex = new RegExp('^(https?:\\\/\\\/)?(www\\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}(\\.[a-zA-Z0-9()]{1,6})\\b(?:[-a-zA-Z0-9()@:%_+.~#?&\/=]*)$', '')
-
-const str = siteURL.value;
-
-// Reset `lastIndex` if this regex is defined globally
-// regex.lastIndex = 0;
-
-if ((regex.test(str)))
+if ((regex[element.id].test(element.value)))
 {
-	siteURL.classList.add('is-valid');
-	siteURL.classList.remove('is-invalid');
+	element.classList.add('is-valid');
+	element.classList.remove('is-invalid');
+	element.classList.add('mb-4');
+	element.nextElementSibling.classList.remove('d-block')
 }
 else
 {
-	siteURL.classList.add('is-invalid');
-	siteURL.classList.remove('is-valid');
+	element.classList.add('is-invalid');
+	element.classList.remove('is-valid');
+	element.classList.remove('mb-4');
+	element.nextElementSibling.classList.add('d-block')
 }}
