@@ -60,7 +60,7 @@ function addBookmark()
     if(regularEx(siteName) && regularEx(siteURL))
     {
 		var isRepeated = false;
-		if(urls.length == null)
+		if(urls == null)
 		{
 			return;
 		}
@@ -88,7 +88,7 @@ function addBookmark()
 		urls.push(bookmark);
 		refreshData();
 		reset();
-		console.log(urls);
+		// console.log(urls);
     }
 }
 
@@ -97,7 +97,7 @@ function displayBookamrks()
 {
     var tableRows = ``;
 
-	if(urls.length == null)
+	if(urls == null)
 	{
 		return
 	}
