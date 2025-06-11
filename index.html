@@ -27,11 +27,13 @@
 
                 <div class="mt-3 px-2 me-auto w-100">
                     <label for="siteName" class="form-label"><i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label>
-                    <input type="text" name="text" id="siteName" class="form-control" placeholder="Bookmark Name">
+                    <input oninput="regularEx(this)" type="text" name="text" id="siteName" class="form-control mb-4" placeholder="Bookmark Name">
+                    <div class="invalid-feedback">Site name must contain at least 3 characters (letters and numbers only).</div>
                 </div>
                 <div class="mt-3 px-2 me-auto w-100">
                     <label for="siteURL" class="form-label"><i class="fa-solid fa-link me-2"></i>Site URL</label>
-                    <input oninput="regularEx()" type="url" name="url" id="siteURL" class="form-control danger" placeholder="Website URL">
+                    <input oninput="regularEx(this)" type="url" name="url" id="siteURL" class="form-control mb-4" placeholder="Website URL">
+                    <div class="invalid-feedback">Please Enter a valid URL.</div>
                 </div>
 
                 <button id="submitbtn" type="submit" onclick="addBookmark()" class="btn btn-page px-5 my-3 ">Submit</button>
@@ -53,7 +55,7 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td><button onclick="window.open('//www.facebook.com/', '_blank')" type="submit" class="btn btn-oily"><i class="fa-solid fa-eye pe-2"></i>Visit</button></td>
-                    <td><button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen pe-2"></i>Edit</button></td>
+                    <td><button type="submit" class="btn btn-warning"><i class="fa-solid fa-pen pe-2 "></i>Edit</button></td>
                     <td><button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can pe-2"></i>Delete</button></td>
                     </tr>
                 </tbody>
