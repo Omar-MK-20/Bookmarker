@@ -2,7 +2,7 @@
 
 Bookmarker is a simple web application that allows users to save, edit, and delete their favorite website bookmarks. The app features a clean UI, live validation, and persistent storage using the browser's localStorage.
 
-- LiveDemo here [omar-mk-20.github.io/Bookmarker/](omar-mk-20.github.io/Bookmarker/)
+- [LiveDemo here](https://omar-mk-20.github.io/Bookmarker/)
 
 ## Features
 
