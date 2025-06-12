@@ -57,16 +57,39 @@ function changeBtnToSubmit()
 
 function addBookmark()
 {
-    var bookmark = 
+    if(regularEx(siteName) && regularEx(siteURL))
     {
-        siteName: siteName.value,
-        siteURL: siteURL.value
-    }
+		var isRepeated = false;
+		if(urls != null)
+		{
+			for(var i = 0; i < urls.length; i++)
+			{
+				
+				if(siteName.value == urls[i].siteName)
+				{
+					isRepeated = true;
+					break;
+				}
+			}
+		}
+		
+		if(isRepeated)
+		{
+			siteName.classList.remove('mb-4');
+			siteName.nextElementSibling.classList.add('d-block');
+			return
+		}
+		var bookmark = 
+		{
+			siteName: siteName.value,
+			siteURL: siteURL.value
+		}
 
-    urls.push(bookmark);
-    refreshData();
-    reset();
-    console.log(urls);
+		urls.push(bookmark);
+		refreshData();
+		reset();
+		// console.log(urls);
+    }
 }
 
 
@@ -74,6 +97,10 @@ function displayBookamrks()
 {
     var tableRows = ``;
 
+	if(urls == null)
+	{
+		return
+	}
     for(var i = 0; i < urls.length; i++)
     {
         tableRows += `
@@ -112,7 +139,7 @@ swalWithBootstrapButtons.fire({
     refreshData();
     swalWithBootstrapButtons.fire({
       title: "Deleted!",
-      text: "Your file has been deleted.",
+      text: "Your Bookmark has been deleted.",
       icon: "success"
     });
   } else if (
@@ -138,12 +165,15 @@ function getData(index)
 
 function updateBookmark()
 {
-    urls[editingBookmark].siteName = siteName.value;
-    urls[editingBookmark].siteURL = siteURL.value;
+    if(regularEx(siteName) && regularEx(siteURL))
+	{
+		urls[editingBookmark].siteName = siteName.value;
+		urls[editingBookmark].siteURL = siteURL.value;
 
-    refreshData();
-    changeBtnToSubmit();
-    reset();
+		refreshData();
+		changeBtnToSubmit();
+		reset();
+	}
 }
 
 // console.log(siteName.id);
@@ -153,7 +183,7 @@ function regularEx(element)
 	const regex = 
 	{
 		siteName: /^[a-zA-Z0-9]{2,}(?:[a-zA-Z0-9\s]*)[a-zA-Z0-9]+$/,
-		siteURL: /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{1,63}(\.[a-zA-Z0-9-]{1,63})*(\.(?:com|net|org|co|biz|info|tech|app|store|shop|dev|design|media|finance|money|us|uk|ca|au|in|nyc|london|berlin|asia|africa|eu|lat|io|ai|me|xyz|site|online|space|club|life|guru|ninja|cool|fun|today|world))\b(:\d{1,5})?(\/[^\s]*)?$/
+		siteURL: /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]{1,63}(\.[a-zA-Z0-9-]{1,63})*(\.(?:com|net|org|co|biz|info|tech|app|store|shop|dev|design|media|finance|money|us|uk|ca|au|in|nyc|london|berlin|asia|africa|eu|lat|io|ai|me|xyz|site|online|space|club|life|guru|ninja|cool|fun|today|world|edu|eg))\b(:\d{1,5})?(\/[^\s]*)?$/
 	}
 
 if ((regex[element.id].test(element.value)))
@@ -162,6 +192,7 @@ if ((regex[element.id].test(element.value)))
 	element.classList.remove('is-invalid');
 	element.classList.add('mb-4');
 	element.nextElementSibling.classList.remove('d-block')
+  return true;
 }
 else
 {
@@ -169,4 +200,5 @@ else
 	element.classList.remove('is-valid');
 	element.classList.remove('mb-4');
 	element.nextElementSibling.classList.add('d-block')
+  return false;
 }}
